@@ -1,0 +1,314 @@
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title></title>
+		<!-- <base href=""> -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/stylesheet.css">
+		<!-- <link rel="alternative stylesheet" type="text/css" media="screen" href="css/accessibility.css"> -->
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<!-- <script type="text/javascript" src="js/global.js"></script> -->
+		<!-- <script type="text/javascript" src="js/#.js"></script> -->
+		<script type="text/javascript">
+position = 3;
+fallVar1 = 1;
+fallVar2 = 5;
+fallVar3 = 9;
+fallVar4 = 13;
+fallVar5 = 17;
+score = 0;
+record = 0;
+bonus=false;
+
+function doKey($key) {
+  if ($key == 97) {
+	if(position != 1){
+				var divId = 'p'+position;
+				document.getElementById(divId).style.backgroundImage = 'none';
+				newImage = "url(agilityL.gif)";
+				position = position - 1;
+				var divId = 'p'+position;
+				document.getElementById(divId).style.backgroundImage = newImage;
+				}
+  } 
+  if($key == 100) {
+		if(position != 5){
+				var divId = 'p'+position;
+				document.getElementById(divId).style.backgroundImage = 'none';
+				newImage = "url(agility.gif)";
+				position = position + 1;
+				if(position == 5 && bonus){
+					score = score + 50;
+					bonus = false;
+					document.getElementById('treasure').style.backgroundImage = 'none';
+				}
+				var divId = 'p'+position;
+				document.getElementById(divId).style.backgroundImage = newImage;
+				}
+		}
+  }
+  
+  function fall(){
+	setInterval(function(){
+	if(0<fallVar1 && fallVar1< 5){
+			if(fallVar1 == 1 ){
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar1).style.backgroundImage = newImage;
+				fallVar1 = fallVar1 + 1;
+				score++;
+				}else{
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar1).style.backgroundImage = newImage;
+				var id = fallVar1 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar1 = fallVar1 + 1;
+				}
+	}else{
+				var id = fallVar1 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar1 = fallVar1 + 1;
+				if(position == 1){
+					newImage = "url(agilityDown.gif)";
+					var divId = 'p'+position;
+					document.getElementById(divId).style.backgroundImage = newImage;
+					if(record > score){
+					setTimeout(function(){alert("game over")},20);
+					score = 0;
+					}else{
+					record = score;
+					setRecord();
+					setTimeout(function(){alert("New record! \n"+record)},10);
+					score = 0;
+					}
+				}
+				fallVar1 = 1;
+	}
+	
+	setScore();
+	},1000);
+	
+	setInterval(function(){
+	if(4<fallVar2 && fallVar2< 9){
+			if(fallVar2 == 5 ){
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar2).style.backgroundImage = newImage;
+				fallVar2 = fallVar2 + 1;
+				score++;
+				}else{
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar2).style.backgroundImage = newImage;
+				var id = fallVar2 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar2 = fallVar2 + 1;
+				}
+	}else{
+				var id = fallVar2 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar2 = fallVar2 + 1;
+				if(position == 2){
+					newImage = "url(agilityDown.gif)";
+					var divId = 'p'+position;
+					document.getElementById(divId).style.backgroundImage = newImage;
+					if(record > score){
+					setTimeout(function(){alert("game over")},20);
+					score = 0;
+					}else{
+					record = score;
+					setRecord();
+					setTimeout(function(){alert("New record! \n"+record)},10);
+					score = 0;
+					}
+					
+				}
+				fallVar2 = 5;
+	}
+	
+	setScore();
+	},700);
+	
+	setInterval(function(){
+	if(8<fallVar3 && fallVar3< 13){
+			if(fallVar3 == 9 ){
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar3).style.backgroundImage = newImage;
+				fallVar3 = fallVar3 + 1;
+				score++;
+				}else{
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar3).style.backgroundImage = newImage;
+				var id = fallVar3 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar3 = fallVar3 + 1;
+				}
+	}else{
+				var id = fallVar3 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar3 = fallVar3 + 1;
+				if(position == 3){
+					newImage = "url(agilityDown.gif)";
+					var divId = 'p'+position;
+					document.getElementById(divId).style.backgroundImage = newImage;
+					if(record > score){
+					setTimeout(function(){alert("game over")},20);
+					score = 0;
+					}else{
+					record = score;
+					setRecord();
+					setTimeout(function(){alert("New record! \n"+record)},10);
+					score = 0;
+					}
+					
+				}
+				fallVar3 = 9;
+	}
+	
+	setScore();
+	},400);
+	
+	setInterval(function(){
+	if(12<fallVar4 && fallVar4< 17){
+			if(fallVar4 == 13 ){
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar4).style.backgroundImage = newImage;
+				fallVar4 = fallVar4 + 1;
+				score++;
+				}else{
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar4).style.backgroundImage = newImage;
+				var id = fallVar4 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar4 = fallVar4 + 1;
+				}
+	}else{
+				var id = fallVar4 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar4 = fallVar4 + 1;
+				if(position == 4){
+					newImage = "url(agilityDown.gif)";
+					var divId = 'p'+position;
+					document.getElementById(divId).style.backgroundImage = newImage;
+					if(record > score){
+					setTimeout(function(){alert("game over")},20);
+					score = 0;
+					}else{
+					record = score;
+					setRecord();
+					setTimeout(function(){alert("New record! \n"+record)},10);
+					score = 0;
+					}
+					
+				}
+				fallVar4 = 13;
+	}
+	
+	setScore();
+	},200);
+	
+	setInterval(function(){
+	if(16<fallVar5 && fallVar5< 21){
+			if(fallVar5 == 17 ){
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar5).style.backgroundImage = newImage;
+				fallVar5 = fallVar5 + 1;
+				score++;
+				}else{
+				newImage = "url(bomb.jpg)";
+				document.getElementById('place'+fallVar5).style.backgroundImage = newImage;
+				var id = fallVar5 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar5 = fallVar5 + 1;
+				}
+	}else{
+				var id = fallVar5 - 1;
+				document.getElementById('place'+id).style.backgroundImage = 'none';
+				fallVar5 = fallVar5 + 1;
+				if(position == 5){
+					newImage = "url(agilityDown.gif)";
+					var divId = 'p'+position;
+					document.getElementById(divId).style.backgroundImage = newImage;
+					if(record > score){
+					setTimeout(function(){alert("game over")},20);
+					score = 0;
+					}else{
+					record = score;
+					setRecord();
+					setTimeout(function(){alert("New record! \n"+record)},10);
+					score = 0;
+					}
+					
+				}
+				fallVar5 = 17;
+	}
+	
+	setScore();
+	},600);
+
+  }
+  
+  function setScore(){
+	document.getElementById('score').innerHTML = score;
+  }
+  
+  function setRecord(){
+	document.getElementById('record').innerHTML = record;
+  }
+  
+    function bonuss(){
+	setInterval(function(){
+					newImage = "url(kiss.jpg)";
+					document.getElementById('treasure').style.backgroundImage = newImage;
+					bonus=true;
+	},5000);}
+
+</script>
+	</head>
+ 
+	<body onKeyPress="doKey(window.event.keyCode)" onLoad="fall(); bonuss();">
+	<div id="main">
+		<div>
+			<div id="place1"  class="cell"></div>
+			<div id="place5"  class="cell"></div>
+			<div id="place9" class="cell"></div>
+			<div id="place13" class="cell"></div>
+			<div id="place17" class="cell"></div>
+			
+			<div id="place2"  class="cell"></div>
+			<div id="place6"  class="cell"></div>
+			<div id="place10" class="cell"></div>
+			<div id="place14" class="cell"></div>
+			<div id="place18" class="cell"></div>
+			
+			<div id="place3"  class="cell"></div>
+			<div id="place7"  class="cell"></div>
+			<div id="place11" class="cell"></div>
+			<div id="place15" class="cell"></div>
+			<div id="place19" class="cell"></div>
+			
+			<div id="place4"  class="cell"></div>
+			<div id="place8"  class="cell"></div>
+			<div id="place12" class="cell"></div>
+			<div id="place16" class="cell"></div>
+			<div id="place20"  class="cell"></div>
+		</div>                                    
+		<div>
+			<div id="p1" onclick="dispayMove(1)" class="cellG"></div>
+			<div id="p2" onclick="dispayMove(1)" class="cellG"></div>
+			<div id="p3" onclick="dispayMove(1)" class="cellG"></div>
+			<div id="p4" onclick="dispayMove(1)" class="cellG"></div>
+			<div id="p5" onclick="dispayMove(1)" class="cellG"></div>
+			<div id="treasure" onclick="dispayMove(1)"></div>
+		</div>
+		<div>
+		<div style="float:left">
+		<div >Score: </div><div id="score">0</div>
+		</div>
+		<div style="float:right">
+		<div style="float:left" >Record: </div><div style="float:left" id="record">0</div>
+		</div>
+		
+		</div>
+	</div>
+	</body>
+</html>
